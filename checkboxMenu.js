@@ -29,7 +29,7 @@
 				.append('<div class="overSelect">');
 
 			// assume menuItem is array of objects structured as [{id:<number>, name:<string>},..{id:<number>, name:<string>}]
-			menuItems.map(function(item)
+			$.map(menuItems, function(item)
 			{
 				$('#'+containerId).find('#checkboxes')
 					.append('<label for="'+item.id+'"><input type="checkbox" id="'+item.id+'"/>'+item.name+'</label>');
