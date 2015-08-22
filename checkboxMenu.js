@@ -2,6 +2,7 @@
 {
 	function checkboxMenuClass(containerId) {
 		var mContainerId = containerId;
+		var mItemIdInFocus = -1;
 		// containerId: should be the id of the container DOM element
 		// menuItems should be [{id:<number>, name:<string>}...{}]
 		function Create(menuItems)
@@ -34,14 +35,29 @@
 				$('#'+containerId).find('#checkboxes').append('<div class="checkbox-item" id='+item.id+'>');
 				$('#'+containerId).find('.checkbox-item#'+item.id)
 					.append('<input type="checkbox" id="'+item.id+'"/>')
-					.append('<label">'+item.name+'</label>');
+					.append('<label type="label" id="'+item.id+'">'+item.name+'</label>');
 					
 			});
 
 			$('#'+containerId).find('input').on('click', function(ev)
 			{
 				console.log('item id '+ ev.target.id + ' checked ' + ev.target.checked);
-				$('#'+containerId).trigger('checkbox-menu-item-selected', {id: ev.target.id, isSelected: ev.target.checked});
+				$('#'+containerId).trigger('checkboxmenu-selected-item-changed', {id: ev.target.id, isSelected: ev.target.checked});
+			});
+			$('#'+containerId).find('label').on('click', function(ev)
+			{
+				console.log("checkbox-item-focus-changed to " + ev.target.id);
+				// remove marker from prev focused item
+				if(mItemIdInFocus != -1) 
+				{
+					$('#'+containerId).find('.checkbox-item#'+mItemIdInFocus).find('label').toggleClass('checkbox-selected-item', false);
+				}
+				 // remember the new item in focus
+				mItemIdInFocus = ev.target.id;
+				// mark the new focused item
+				$('#'+containerId).find('.checkbox-item#'+ev.target.id).find('label').toggleClass('checkbox-selected-item', true);
+				// announce client on new selected item in focus
+				$('#'+containerId).trigger('checkboxmenu-focus-item-changed', {id: ev.target.id});
 			});
 		}
 		function Destroy()

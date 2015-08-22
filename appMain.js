@@ -50,9 +50,13 @@
 			{id:15, name:'option 5'}
 		]);
 
-		$('#menu3').on('checkbox-menu-item-selected', function(ev, params)
+		$('#menu3').on('checkboxmenu-selected-item-changed', function(ev, params)
 		{
 			console.log('option id ' + params.id + ' selection state is ' + params.isSelected);
+		});
+		$('#menu3').on('checkboxmenu-focused-item-changed', function(ev, params)
+		{
+			console.log('new item in focused is ' + params.id);
 		});
 	}
 
