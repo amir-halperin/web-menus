@@ -1,6 +1,7 @@
 .multiselect {
     /*width: 200px;*/
     opacity: 0.2;
+    direction: rtl;
 }
 .multiselect:hover{
     opacity: 1;

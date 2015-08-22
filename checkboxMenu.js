@@ -10,7 +10,9 @@
 
 			$('#'+containerId).append('<form>');
 			$('#'+containerId+'>form').append('<div class="multiselect">');
-			$('#'+containerId).find('.multiselect').append('<div class="selectBox">').append('<div id="checkboxes">');
+			$('#'+containerId).find('.multiselect')
+				.append('<div class="selectBox">')
+				.append('<div id="checkboxes">');
 			$('#'+containerId).find('.selectBox').on('click', function()
 			{
 				var checkboxes = $('#'+containerId).find('#checkboxes').get(0);
@@ -22,12 +24,21 @@
 		            expanded = false;
 		        }
 			});
-			$('#'+containerId).find('.selectBox').append('<select><option>Select an option</option></select>').append('<div class="overSelect">');
+			$('#'+containerId).find('.selectBox')
+				.append('<select><option>Choose Option</option></select>')
+				.append('<div class="overSelect">');
 
-			// assume menuItem is array of objects
+			// assume menuItem is array of objects structured as [{id:<number>, name:<string>},..{id:<number>, name:<string>}]
 			menuItems.map(function(item)
 			{
-				$('#'+containerId).find('#checkboxes').append('<label for="'+item.id+'"><input type="checkbox" id="'+item.id+'"/>'+item.name+'</label>');
+				$('#'+containerId).find('#checkboxes')
+					.append('<label for="'+item.id+'"><input type="checkbox" id="'+item.id+'"/>'+item.name+'</label>');
+			});
+
+			$('#'+containerId).find('input').on('click', function(ev)
+			{
+				console.log('item id '+ ev.target.id + ' checked ' + ev.target.checked);
+				$('#'+containerId).trigger('checkbox-menu-item-selected', {id: ev.target.id, isSelected: ev.target.checked});
 			});
 		}
 		function Destroy()

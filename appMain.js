@@ -42,21 +42,18 @@
 			{id:50, name:'ffaaaff'}
 		]);
 
-		myMenu2.create([
-			{id:11, name:'amir'},
-			{id:12, name:'lihi'},	
-			{id:13, name:'yael'},	
-			{id:14, name:'tomer'},
-			{id:15, name:'yochi'}
+		myMenu3.create([
+			{id:11, name:'option 1'},
+			{id:12, name:'option 2'},	
+			{id:13, name:'option 3'},	
+			{id:14, name:'option 4'},
+			{id:15, name:'option 5'}
 		]);
 
-		myMenu3.create([
-			{id:11, name:'amir'},
-			{id:12, name:'lihi'},	
-			{id:13, name:'yael'},	
-			{id:14, name:'tomer'},
-			{id:15, name:'yochi'}
-		]);
+		$('#menu3').on('checkbox-menu-item-selected', function(ev, params)
+		{
+			console.log('option id ' + params.id + ' slection state is ' + params.isSelected);
+		});
 	}
 
 	window.modules = {};
