@@ -31,8 +31,11 @@
 			// assume menuItem is array of objects structured as [{id:<number>, name:<string>},..{id:<number>, name:<string>}]
 			$.map(menuItems, function(item)
 			{
-				$('#'+containerId).find('#checkboxes')
-					.append('<label for="'+item.id+'"><input type="checkbox" id="'+item.id+'"/>'+item.name+'</label>');
+				$('#'+containerId).find('#checkboxes').append('<div class="checkbox-item" id='+item.id+'>');
+				$('#'+containerId).find('.checkbox-item#'+item.id)
+					.append('<input type="checkbox" id="'+item.id+'"/>')
+					.append('<label">'+item.name+'</label>');
+					
 			});
 
 			$('#'+containerId).find('input').on('click', function(ev)
@@ -51,6 +54,7 @@
 			destroy: Destroy
 		};
 	}
+	// containerId,  the DOM element ID in which to create the menu
 	function factory(containerId)
 	{
 		return new checkboxMenuClass(containerId);
