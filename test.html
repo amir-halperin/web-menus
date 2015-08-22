@@ -1,0 +1,73 @@
+<!DOCTYPE <html>
+<head>
+	<meta charset="UTF-8">
+	<title>test menu</title>
+
+	<link rel="stylesheet" type="text/css" href="checkbox-menu.css">
+
+	<style>
+		.container{
+			position: relative;
+			height: 100%;
+			width: 100%;
+			background-color: grey;
+		}
+		.menu {
+			position: absolute;
+			width: 150px;
+			padding-left: : 10;
+		}
+		option:hover {
+			background-color: red;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class='container' name="app">
+		<div name="content"></div>
+		<!-- <div class='menu' id="menu1" name="menu"></div>
+		<div class='menu' id="menu2" name="menu" style="top:150px;left:50px"></div> -->
+		<div class='menu' id="menu3" style="bottom:0px;right: 20px;"></div>
+
+		<!-- <div class='container' style="top:300px;left:50px">
+			<form>
+			    <div class="multiselect">
+			        <div class="selectBox" onclick="showCheckboxes()">
+			            <select>
+			                <option>Select an option</option>
+			            </select>
+			            <div class="overSelect"></div>
+			        </div>
+			        <div id="checkboxes">
+			            <label for="one_"><input type="checkbox" id="one"/>First checkbox</label>
+			            <label for="two"><input type="checkbox" id="two"/>Second checkbox </label>
+			            <label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
+			        </div>
+			    </div>
+			</form>
+		</div> -->
+
+	</div>
+
+	<script src="../lib/jquery-1.11.3.js"></script>
+	<script src="appMain.js"></script>
+	<script src="menu.js"></script>
+	<script src="checkboxMenu.js"></script>
+
+	<script>
+    var expanded = false;
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
+</script>
+
+</body>
+</html>
